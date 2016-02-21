@@ -6,6 +6,9 @@ TARGET_BOARD_PLATFORM := android-x86
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
+	BLUETOOTH_HCI_USE_USB := false
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_USE_LEGACY_UI := true
 
