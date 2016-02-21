@@ -74,6 +74,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/aicp/prebuilt/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
+#Houdini
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/houdini.tgz:system/etc/houdini.tgz
+
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
