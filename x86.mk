@@ -19,6 +19,7 @@
 
 # CnG
 PRODUCT_PROPERTY_OVERRIDES := \
+    ro.hardware.gralloc=drm \
     wifi.interface=wlan0 \
 
 # Additional settings used in all AOSP builds
