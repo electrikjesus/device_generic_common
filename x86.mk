@@ -17,6 +17,10 @@
 # This is a generic product that isn't specialized for a specific device.
 # It includes the base Android-x86 platform.
 
+# CnG
+PRODUCT_PROPERTY_OVERRIDES := \
+    wifi.interface=wlan0 \
+
 # Additional settings used in all AOSP builds
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.dateformat=MM-dd-yyyy \
