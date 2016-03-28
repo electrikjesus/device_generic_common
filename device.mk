@@ -109,3 +109,6 @@ $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
 # Get native bridge settings
 $(call inherit-product-if-exists,$(LOCAL_PATH)/nativebridge/nativebridge.mk)
+
+# Get Gapps
+$(call inherit-product-if-exists,vendor/google/gapps/gapps.mk)
