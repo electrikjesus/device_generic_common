@@ -22,6 +22,11 @@ PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    ro.sf.lcd_density=160 \
+    persist.sys.nativebridge=1 \
+	
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
     ro.arch=x86 \
     persist.rtc_local_time=1 \
@@ -70,7 +75,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
     $(foreach f,$(wildcard $(LOCAL_PATH)/alsa/*),$(f):$(subst $(LOCAL_PATH),system/etc,$(f))) \
     $(foreach f,$(wildcard $(LOCAL_PATH)/idc/*.idc $(LOCAL_PATH)/keylayout/*.kl),$(f):$(subst $(LOCAL_PATH),system/usr,$(f)))
-
+	
+#Houdini
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(wildcard $(LOCAL_PATH)/arm/* $(LOCAL_PATH)/arm/nb/*),$(f):$(subst $(LOCAL_PATH),system/lib,$(f)))
+	
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_CHARACTERISTICS := tablet
@@ -81,7 +90,7 @@ PRODUCT_AAPT_PREF_CONFIG := mdpi
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 # Get the firmwares
-$(call inherit-product,device/generic/firmware/firmware.mk)
+$(call inherit-product,$(LOCAL_PATH)/firmware.mk)
 
 # Get the touchscreen calibration tool
 $(call inherit-product-if-exists,external/tslib/tslib.mk)
@@ -106,3 +115,6 @@ $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
 # Get native bridge settings
 $(call inherit-product-if-exists,$(LOCAL_PATH)/nativebridge/nativebridge.mk)
+
+# Get Gapps
+$(call inherit-product-if-exists,vendor/google/gapps/gapps.mk)
